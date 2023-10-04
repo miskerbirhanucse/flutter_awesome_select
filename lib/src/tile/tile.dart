@@ -185,6 +185,7 @@ class S2Tile<T> extends StatelessWidget {
   Widget? get _trailingWidget {
     return isTwoLine != true && hideValue != true
         ? Container(
+            padding: trailingPadding,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -205,7 +206,9 @@ class S2Tile<T> extends StatelessWidget {
   Widget? get _trailingIconWidget {
     return isLoading != true
         ? Container(
-            padding: trailingPadding, child: trailing ?? S2Tile.defaultTrailing)
+            padding: trailingPadding,
+            child: trailing ?? S2Tile.defaultTrailing,
+          )
         : S2Tile.defaultLoadingIndicator;
   }
 
