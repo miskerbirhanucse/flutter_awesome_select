@@ -79,6 +79,9 @@ class S2Tile<T> extends StatelessWidget {
   /// If null, `EdgeInsets.symmetric(horizontal: 16.0)` is used.
   final EdgeInsetsGeometry? padding;
 
+  /// padding for trailing widget
+  final EdgeInsetsGeometry? trailingPadding;
+
   /// widget to display below the tile
   /// usually used to display chips with S2TileChips
   final Widget? body;
@@ -102,6 +105,7 @@ class S2Tile<T> extends StatelessWidget {
     this.dense = false,
     this.hideValue = false,
     this.padding,
+    this.trailingPadding,
     this.body,
   }) : super(key: key);
 
@@ -125,6 +129,7 @@ class S2Tile<T> extends StatelessWidget {
     this.dense = false,
     this.hideValue = false,
     this.padding,
+    this.trailingPadding,
     this.body,
   })  : title = title ?? state.titleWidget,
         value = value ?? Text(state.selected.toString()),
@@ -187,8 +192,8 @@ class S2Tile<T> extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 100),
                   child: _valueWidget,
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(start: 5),
+                Container(
+                  padding: trailingPadding,
                   child: _trailingIconWidget,
                 ),
               ],
