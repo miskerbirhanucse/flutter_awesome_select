@@ -167,10 +167,7 @@ class S2Tile<T> extends StatelessWidget {
       leading: leading,
       title: title,
       subtitle: isTwoLine && hideValue != true ? _valueWidget : null,
-      trailing: Container(
-        padding: trailingPadding,
-        child: _trailingWidget,
-      ),
+      trailing: trailing,
       onTap: onTap,
     );
   }
