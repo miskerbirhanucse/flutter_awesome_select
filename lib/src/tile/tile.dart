@@ -167,7 +167,10 @@ class S2Tile<T> extends StatelessWidget {
       leading: leading,
       title: title,
       subtitle: isTwoLine && hideValue != true ? _valueWidget : null,
-      trailing: _trailingWidget,
+      trailing: Container(
+        padding: trailingPadding,
+        child: _trailingWidget,
+      ),
       onTap: onTap,
     );
   }
@@ -184,31 +187,24 @@ class S2Tile<T> extends StatelessWidget {
 
   Widget? get _trailingWidget {
     return isTwoLine != true && hideValue != true
-        ? Container(
-            padding: trailingPadding,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  constraints: const BoxConstraints(maxWidth: 100),
-                  child: _valueWidget,
-                ),
-                Container(
-                  padding: trailingPadding,
-                  child: _trailingIconWidget,
-                ),
-              ],
-            ),
+        ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                constraints: const BoxConstraints(maxWidth: 100),
+                child: _valueWidget,
+              ),
+              Container(
+                child: _trailingIconWidget,
+              ),
+            ],
           )
         : _trailingIconWidget;
   }
 
   Widget? get _trailingIconWidget {
     return isLoading != true
-        ? Container(
-            padding: trailingPadding,
-            child: trailing ?? S2Tile.defaultTrailing,
-          )
+        ? trailing ?? S2Tile.defaultTrailing
         : S2Tile.defaultLoadingIndicator;
   }
 
