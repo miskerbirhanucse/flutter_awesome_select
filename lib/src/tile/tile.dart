@@ -204,7 +204,8 @@ class S2Tile<T> extends StatelessWidget {
 
   Widget? get _trailingIconWidget {
     return isLoading != true
-        ? trailing ?? S2Tile.defaultTrailing
+        ? Container(
+            padding: trailingPadding, child: trailing ?? S2Tile.defaultTrailing)
         : S2Tile.defaultLoadingIndicator;
   }
 
